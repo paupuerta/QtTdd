@@ -9,12 +9,12 @@ SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 INCLUDE (qtMake)
 
-SET(PATH_SUSE /opt/suse11.2)
+#SET(PATH_SUSE /opt/suse11.2)
 # Configuracion de las QT
-SET (QT_QMAKE_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/qmake )
-SET (QT_MOC_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/moc )
-SET (QT_UI_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/uic )
-SET (QT_QRC_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/rcc )
+#SET (QT_QMAKE_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/qmake )
+#SET (QT_MOC_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/moc )
+#SET (QT_UI_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/uic )
+#SET (QT_QRC_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/rcc )
 FIND_PACKAGE(Qt4 4.8.4 REQUIRED QtCore QtNetwork QtTest)
 
 # this one is important
@@ -24,16 +24,15 @@ FIND_PACKAGE(Qt4 4.8.4 REQUIRED QtCore QtNetwork QtTest)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # specify the cross compiler
-	SET(PATH_SUSE /opt/suse11.2)
 #
 #SET(CMAKE_LIBRARY_PATH ${PATH_SUSE}/usr/lib/ ${PATH_SUSE}/lib ${PATH_SUSE}/lib/cross)
-   SET(CMAKE_SYSTEM_LIBRARY_PATH ${PATH_SUSE}/usr/lib/ ${PATH_SUSE}/lib ${PATH_SUSE}/lib/cross)
+#   SET(CMAKE_SYSTEM_LIBRARY_PATH ${PATH_SUSE}/usr/lib/ ${PATH_SUSE}/lib ${PATH_SUSE}/lib/cross)
 	SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 	SET(CMAKE_INSTALL_RPATH ${CMAKE_LIBRARY_PATH})
 	SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-	SET(CMAKE_C_COMPILER   ${PATH_SUSE}/usr/bin/gcc)
-	SET(CMAKE_CXX_COMPILER ${PATH_SUSE}/usr/bin/g++)
+   #	SET(CMAKE_C_COMPILER   ${PATH_SUSE}/usr/bin/gcc)
+   #	SET(CMAKE_CXX_COMPILER ${PATH_SUSE}/usr/bin/g++)
 
 # search for programs in the build host directories
 	SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
@@ -75,7 +74,6 @@ gen_moc( TEST_CLNT_WEB_MOC
 message ("TEST_CLNT_WEB_MOC ${TEST_CLNT_WEB_MOC}")
 
 
-
 add_executable ( testClntWebSrv ${SRC_TEST_CLNT_WEB_SRV} ${TEST_CLNT_WEB_MOC}
                                 ${PROJECT_SOURCE_DIR}/src/testClntWebSrv.cpp
                                 )
@@ -88,7 +86,8 @@ SET_TARGET_PROPERTIES ( testClntWebSrv PROPERTIES COMPILE_FLAGS "${CXX_FLAGS} -m
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libociei.so)
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libclntshcore.so.12.1)
 target_link_libraries(  testClntWebSrv ${QT_QTTEST_LIBRARY} ${QT_LIBRARIES} )
-target_link_libraries(  testClntWebSrv ${PATH_SUSE}/usr/lib/libX11.so)
+#target_link_libraries(  testClntWebSrv ${PATH_SUSE}/usr/lib/libX11.so)
+target_link_libraries(  testClntWebSrv /usr/lib/libX11.so)
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libons.so)
 ADD_TEST( NAME TestClnt COMMAND testClntWebSrv )
 
