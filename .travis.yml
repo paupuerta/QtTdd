@@ -8,9 +8,9 @@ os:
 language: cpp
 
 before_install:
-  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
+  - sudo add-apt-repository --yes ppa:beineri/opt-qt487-trusty
   - sudo apt-get update -qq
-  - sudo apt-get install -qq g++ qt4-qmake libqt4-dev 
+  - sudo apt-get install -qq g++ qt4-qmake libqt4-dev
 
 before_script:
   - mkdir build
