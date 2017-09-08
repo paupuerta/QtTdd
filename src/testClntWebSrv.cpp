@@ -1,9 +1,9 @@
-#include <assert.h>
-#include <iostream>
+//#include <assert.h>
+//#include <iostream>
 
-using namespace std;
-#include <QCoreApplication>
-#include "TestRunner.h"
+//using namespace std;
+//#include <QCoreApplication>
+//#include "TestRunner.h"
 
 //#int main(int argc, char **argv)
 //#{
