@@ -58,8 +58,8 @@ INCLUDE_DIRECTORIES ( ${PROJECT_SOURCE_DIR}/src )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Seccion de test ClntWebSrv
-set (SRC_TEST_CLNT_WEB_SRV src/TestRunner.cpp src/testClntWebSrv.cpp)
-set (SRC_TEST_CLNT_WEB_H_MOC src/TestRunner.h)
+set (SRC_TEST_CLNT_WEB_SRV src/TestRunner.cpp)
+set (SRC_TEST_CLNT_WEB_H_MOC src/TestRunner.h src/testClntWebSrv.cpp)
 set (SRC_TEST_CLNT_WEB_MOC_GEN "src/autogen")
 
 IF (NOT EXISTS ${SRC_TEST_CLNT_WEB_MOC_GEN})
