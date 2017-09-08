@@ -26,6 +26,7 @@ using namespace std;
 class TestQString: public QObject
 {
 Q_OBJECT
+public:
    TestQString(){};
    virtual ~TestQString(){};
 private slots:
