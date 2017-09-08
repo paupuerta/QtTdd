@@ -87,7 +87,7 @@ SET_TARGET_PROPERTIES ( testClntWebSrv PROPERTIES COMPILE_FLAGS "${CXX_FLAGS} -m
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libclntshcore.so.12.1)
 target_link_libraries(  testClntWebSrv ${QT_QTTEST_LIBRARY} ${QT_LIBRARIES} )
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/usr/lib/libX11.so)
-target_link_libraries(  testClntWebSrv /usr/lib/libX11.so)
+#target_link_libraries(  testClntWebSrv /usr/lib/libX11.so)
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libons.so)
 ADD_TEST( NAME TestClnt COMMAND testClntWebSrv )
 
