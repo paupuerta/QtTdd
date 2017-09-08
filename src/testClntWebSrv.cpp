@@ -19,8 +19,8 @@
 //#
 //#   return a.exec();
 //#}
-
 #include <QtTest/QtTest>
+#include <QObject>
 
 class TestQString: public QObject
 {
