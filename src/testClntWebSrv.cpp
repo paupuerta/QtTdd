@@ -25,7 +25,9 @@ using namespace std;
 
 class TestQString: public QObject
 {
-    Q_OBJECT
+Q_OBJECT
+   TestQString(){};
+   virtual ~TestQString(){};
 private slots:
     void toUpper();
 };
