@@ -8,7 +8,6 @@ SET(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 INCLUDE (qtMake)
-
 #SET(PATH_SUSE /opt/suse11.2)
 # Configuracion de las QT
 #SET (QT_QMAKE_EXECUTABLE ${PATH_SUSE}/opt/qt-4.8.4/bin/qmake )
@@ -18,29 +17,29 @@ INCLUDE (qtMake)
 FIND_PACKAGE(Qt4 4.8.4 REQUIRED QtCore QtNetwork QtTest)
 
 # this one is important
-	set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_NAME Linux)
 #this one not so much
-	set(CMAKE_SYSTEM_VERSION 1)
+set(CMAKE_SYSTEM_VERSION 1)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # specify the cross compiler
 #
 #SET(CMAKE_LIBRARY_PATH ${PATH_SUSE}/usr/lib/ ${PATH_SUSE}/lib ${PATH_SUSE}/lib/cross)
 #   SET(CMAKE_SYSTEM_LIBRARY_PATH ${PATH_SUSE}/usr/lib/ ${PATH_SUSE}/lib ${PATH_SUSE}/lib/cross)
-	SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
-	SET(CMAKE_INSTALL_RPATH ${CMAKE_LIBRARY_PATH})
-	SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+SET(CMAKE_INSTALL_RPATH ${CMAKE_LIBRARY_PATH})
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
    #	SET(CMAKE_C_COMPILER   ${PATH_SUSE}/usr/bin/gcc)
    #	SET(CMAKE_CXX_COMPILER ${PATH_SUSE}/usr/bin/g++)
 
 # search for programs in the build host directories
-	SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 # for libraries and headers in the target directories
-	SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-	SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 # Compilamos los proyectos
-	ADD_DEFINITIONS (-DNDEBUG -DQTONLY -pipe -Wno-deprecated -Wno-write-strings -Wall ${QT_DEFINITIONS} )
+ADD_DEFINITIONS (-DNDEBUG -DQTONLY -pipe -Wno-deprecated -Wno-write-strings -Wall ${QT_DEFINITIONS} )
 
 
 ADD_DEFINITIONS(-DSOCKET_CLOSE_ON_EXEC)
@@ -59,7 +58,6 @@ INCLUDE_DIRECTORIES ( ${PROJECT_SOURCE_DIR}/src )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Seccion de test ClntWebSrv
-
 set (SRC_TEST_CLNT_WEB_SRV src/TestRunner.cpp)
 set (SRC_TEST_CLNT_WEB_H_MOC src/TestRunner.h)
 set (SRC_TEST_CLNT_WEB_MOC_GEN "src/autogen")
@@ -68,24 +66,24 @@ IF (NOT EXISTS ${SRC_TEST_CLNT_WEB_MOC_GEN})
    execute_process (COMMAND mkdir -p ${SRC_TEST_CLNT_WEB_MOC_GEN})
 ENDIF()
 
-gen_moc( TEST_CLNT_WEB_MOC
+gen_moc (TEST_CLNT_WEB_MOC
         ${SRC_TEST_CLNT_WEB_MOC_GEN}
         ${SRC_TEST_CLNT_WEB_H_MOC})
-message ("TEST_CLNT_WEB_MOC ${TEST_CLNT_WEB_MOC}")
+
+MESSAGE ("TEST_CLNT_WEB_MOC ${TEST_CLNT_WEB_MOC}")
 
 
-add_executable ( testClntWebSrv ${SRC_TEST_CLNT_WEB_SRV} ${TEST_CLNT_WEB_MOC}
-                                ${PROJECT_SOURCE_DIR}/src/testClntWebSrv.cpp
-                                )
+ADD_EXECUTABLE ( testClntWebSrv ${SRC_TEST_CLNT_WEB_SRV} ${TEST_CLNT_WEB_MOC}
+                                ${PROJECT_SOURCE_DIR}/src/testClntWebSrv.cpp)
 
-SET_TARGET_PROPERTIES ( testClntWebSrv PROPERTIES COMPILE_FLAGS "${CXX_FLAGS} -m32" LINK_FLAGS -m32 )
-
+SET_TARGET_PROPERTIES ( testClntWebSrv PROPERTIES COMPILE_FLAGS "${CXX_FLAGS} -m64" LINK_FLAGS -m64 )
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libnnz12.so  )
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libclntsh.so)
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libclntshcore.so.12.1)
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libociei.so)
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libclntshcore.so.12.1)
-target_link_libraries(  testClntWebSrv ${QT_QTTEST_LIBRARY} ${QT_LIBRARIES} )
+#${QT_QTTEST_LIBRARY}
+TARGET_LINK_LIBRARIES ( testClntWebSrv ${QT_LIBRARIES} )
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/usr/lib/libX11.so)
 #target_link_libraries(  testClntWebSrv /usr/lib/libX11.so)
 #target_link_libraries(  testClntWebSrv ${PATH_SUSE}/lib/libons.so)
