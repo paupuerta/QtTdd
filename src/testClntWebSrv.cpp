@@ -20,15 +20,11 @@ using namespace std;
 //#   return a.exec();
 //#}
 
-
 #include <QtTest/QtTest>
 
 class TestQString: public QObject
 {
 Q_OBJECT
-public:
-   TestQString(){};
-   virtual ~TestQString(){};
 private slots:
     void toUpper();
 };
@@ -40,3 +36,4 @@ void TestQString::toUpper()
 }
 
 QTEST_MAIN(TestQString)
+#include "testClntWebSrv.cxx"
