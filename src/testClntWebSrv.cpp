@@ -19,15 +19,7 @@
 //#
 //#   return a.exec();
 //#}
-#include <QtTest/QtTest>
-#include <QObject>
-
-class TestQString: public QObject
-{
-Q_OBJECT
-private slots:
-    void toUpper();
-};
+#include "testClntWebSrv.h"
 
 void TestQString::toUpper()
 {
