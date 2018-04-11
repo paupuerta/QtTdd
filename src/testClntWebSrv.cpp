@@ -28,4 +28,4 @@ void TestQString::toUpper()
 }
 
 QTEST_MAIN(TestQString)
-#include "autogen/testClntWebSrv.cxx"
+//#include "autogen/testClntWebSrv.cxx"
